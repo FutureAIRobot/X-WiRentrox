@@ -59,7 +59,7 @@ async def perform_search(client: Bot, message: Message, query: str):
     await message.reply_text(
             f"<b> Here is the result for {message.text}</b>",
             reply_markup=InlineKeyboardMarkup(buttons)
-
+        )
 
 
 async def spell_check(client: Bot, message: Message):
@@ -115,12 +115,12 @@ async def spell_check(client: Bot, message: Message):
         [
             InlineKeyboardButton(
                 text=movie.strip(),
-                callback_data=f"spolling#{user}#{message.message_id}",
+                callback_data=f"spelling#{user}#{message.id}",  # Modified callback data
             )
         ] for movie in movielist
     ]
-    btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await message.reply(
+    btn.append([InlineKeyboardButton(text="Close", callback_data=f'spelling#{user}#close_spellcheck')])  # Modified callback data
+    await message.edit_text(  # Edit the original message with the spelling suggestions
         "I couldn't find anything related to that.\nDid you mean any one of these?",
         reply_markup=InlineKeyboardMarkup(btn)
     )
