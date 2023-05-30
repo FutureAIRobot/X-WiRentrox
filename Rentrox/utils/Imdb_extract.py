@@ -1,7 +1,7 @@
 from imdb import IMDb
 import re
 
-LONG_ESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "True"), True)
+LONG_ESCRIPTION = is_enabled("True", True)
 
 
 async def get_poster(query, bulk=False, id=False, file=None):
