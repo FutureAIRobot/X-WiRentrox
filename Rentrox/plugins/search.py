@@ -3,7 +3,7 @@ from pyrogram import filters, enums, Client
 from Rentrox import Config
 from Rentrox.bot import Bot
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
-
+from Rentrox.utils import get_poster, search_gagala
 import logging
 import asyncio
 
