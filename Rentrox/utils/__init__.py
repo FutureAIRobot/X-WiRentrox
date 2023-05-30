@@ -1,1 +1,1 @@
-from . import get_poster
+from .Imdb_extract import get_poster
