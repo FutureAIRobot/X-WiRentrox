@@ -1,6 +1,7 @@
 import requests
 import re
 from imdb import Cinemagoer
+from bs4 import BeautifulSoup
 
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
