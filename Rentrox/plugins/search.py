@@ -31,39 +31,39 @@ async def perform_search(client: Bot, message: Message, query: str):
     if not btn:
         await message.reply_text("Your Request not Available")
         return
-
-        if len(btn) > 5: 
-            btns = list(split_list(btn, 5)) 
-            keyword = f"{message.chat.id}-{message.id}"
-            BUTTONS[keyword] = {
-                "total" : len(btns),
-                "buttons" : btns
-            }
-        else:
-            buttons = btn
-            buttons.append(
-                [InlineKeyboardButton(text="📃 Pages 1/1",callback_data="pages")]
-            )
-            await message.reply_text(
-                f"<b> Here is the result for {message.text}</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-            )
-            return
-
-        data = BUTTONS[keyword]
-        buttons = data['buttons'][0].copy()
-
+    
+    if len(btn) > 5: 
+        btns = list(split_list(btn, 5)) 
+        keyword = f"{message.chat.id}-{message.id}"
+        BUTTONS[keyword] = {
+            "total" : len(btns),
+            "buttons" : btns
+        }
+    else:
+        buttons = btn
         buttons.append(
-            [InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_0_{keyword}")]
-        )    
-        buttons.append(
-            [InlineKeyboardButton(text=f"📃 Pages 1/{data['total']}",callback_data="pages")]
+            [InlineKeyboardButton(text="📃 Pages 1/1",callback_data="pages")]
         )
-
         await message.reply_text(
-                f"<b> Here is the result for {message.text}</b>",
-                reply_markup=InlineKeyboardMarkup(buttons)
-            )    
+            f"<b> Here is the result for {message.text}</b>",
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+        return
+
+    data = BUTTONS[keyword]
+    buttons = data['buttons'][0].copy()
+
+    buttons.append(
+        [InlineKeyboardButton(text="NEXT ⏩",callback_data=f"next_0_{keyword}")]
+    )    
+    buttons.append(
+        [InlineKeyboardButton(text=f"📃 Pages 1/{data['total']}",callback_data="pages")]
+    )
+
+    await message.reply_text(
+            f"<b> Here is the result for {message.text}</b>",
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )    
         
 
 
