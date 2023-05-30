@@ -9,11 +9,11 @@ class Bot(Client):
 
     def __init__(self):
         super().__init__(
-            "filebot",
+            "rentroxbot",
             api_hash=Config.API_HASH,
             api_id=Config.API_ID,
             plugins={
-                "root": "plugins"
+                "root": "Rentrox/plugins"
             },
             workers=200,
             bot_token=Config.BOT_TOKEN            
