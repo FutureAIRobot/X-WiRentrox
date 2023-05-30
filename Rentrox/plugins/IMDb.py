@@ -1,9 +1,10 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from Rentrox.utils import get_poster
 import logging
+from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
+from pyrogram import Client, filters, enums
 
 logger = logging.getLogger(__name__)
-
 logger.setLevel(logging.ERROR)
 
 @Client.on_message(filters.command(["imdb", 'search']))
