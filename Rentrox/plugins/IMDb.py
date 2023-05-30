@@ -3,6 +3,7 @@ from Rentrox.utils import get_poster
 import logging
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from pyrogram import Client, filters, enums
+from Rentrox.Files.script import IMDB_INFO
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -42,7 +43,7 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
         ]
     message = quer_y.message.reply_to_message or quer_y.message
     if imdb:
-        caption = IMDB_TEMPLATE.format(
+        caption = IMDB_INFO.format(
             query = imdb['title'],
             title = imdb['title'],
             votes = imdb['votes'],
