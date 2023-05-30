@@ -3,7 +3,7 @@ from pyrogram import Client, __version__, enums
 
 # from pyrogram.types import ParseMode
 
-from Rentrox.config import Config, LOGGER
+from Rentrox import Config, LOGGER
 
 from Rentrox.user import User
 
