@@ -1,5 +1,8 @@
-from imdb import IMDb
+
 import re
+from imdb import Cinemagoer
+
+imdb = Cinemagoer()
 
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
