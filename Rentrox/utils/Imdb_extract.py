@@ -92,6 +92,8 @@ async def get_poster(query, bulk=False, id=False, file=None):
         'url':f'https://www.imdb.com/title/tt{movieid}'
     }
 
+MAX_LIST_ELM = None 
+
 def list_to_str(k):
     if not k:
         return "N/A"
