@@ -3,6 +3,8 @@ Pyrogram==2.0.106
 Dnspython==2.3.0
 imdbpy==2022.7.9
 requests==2.31.0
+bs4==0.0.1
+
 
 #For Web app hosting 
 Flask==2.2.2
