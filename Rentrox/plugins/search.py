@@ -24,8 +24,7 @@ async def perform_search(client: Bot, message: Message, query: str):
         btn.append([InlineKeyboardButton(text=f"{file_name}", url=f"{link}")])
 
     if not btn:
-        await message.reply_text("Your Request not Available")
-        await spell_check(client, message)  # Invoke spell check function
+        await message.reply_text("Your Request not Available")        
         return
     
     if len(btn) > 5:
