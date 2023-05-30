@@ -1,6 +1,9 @@
 from imdb import IMDb
 import re
 
+LONG_ESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "True"), True)
+
+
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         # https://t.me/GetTGLink/4183
@@ -114,3 +117,11 @@ async def search_gagala(text):
     soup = BeautifulSoup(response.text, 'html.parser')
     titles = soup.find_all( 'h3' )
     return [title.getText() for title in titles]
+
+def is_enabled(value, default):
+    if value.lower() in ["true", "yes", "1", "enable", "y"]:
+        return True
+    elif value.lower() in ["false", "no", "0", "disable", "n"]:
+        return False
+    else:
+        return default
