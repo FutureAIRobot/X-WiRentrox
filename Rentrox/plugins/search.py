@@ -15,11 +15,6 @@ BUTTONS = {}
 
 SPELL_CHECK = {}
 
-
-
-
-
-
 async def perform_search(client: Bot, message: Message, query: str):
     btn = []
     async for msg in client.USER.search_messages(Config.SEARCHCHANNEL_ID, query=query, filter=MEDIA_FILTER):
@@ -30,10 +25,11 @@ async def perform_search(client: Bot, message: Message, query: str):
 
     if not btn:
         await message.reply_text("Your Request not Available")
+        await spell_check(client, message)  # Invoke spell check function
         return
     
-    if len(btn) > 5: 
-        btns = list(split_list(btn, 5)) 
+    if len(btn) > 5:
+        btns = list(split_list(btn, 5))
         keyword = f"{message.chat.id}-{message.id}"
         BUTTONS[keyword] = {
             "total" : len(btns),
@@ -63,8 +59,7 @@ async def perform_search(client: Bot, message: Message, query: str):
     await message.reply_text(
             f"<b> Here is the result for {message.text}</b>",
             reply_markup=InlineKeyboardMarkup(buttons)
-        )    
-        
+
 
 
 async def spell_check(client: Bot, message: Message):
