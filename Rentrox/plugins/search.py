@@ -13,7 +13,6 @@ logger.setLevel(logging.ERROR)
 MEDIA_FILTER = enums.MessagesFilter.VIDEO 
 BUTTONS = {}
 
-SPELL_CHECK = {}
 
 async def perform_search(client: Bot, message: Message, query: str):
     btn = []
