@@ -2,8 +2,6 @@
 import re
 from imdb import Cinemagoer
 
-imdb = Cinemagoer()
-
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
         return True
@@ -13,7 +11,7 @@ def is_enabled(value, default):
         return default
 
 LONG_ESCRIPTION = is_enabled("True", True)
-
+imdb = Cinemagoer()
 
 async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
